@@ -8,7 +8,7 @@ Like [SCSU](http://en.wikipedia.org/wiki/Standard_Compression_Scheme_for_Unicode
 I could not find any javascript implementations of BOCU so I wrote this one. This should be a binary equivalent of the C code however I have not found any bocu1 files to test. Tested on the entire unicode range. Tested in the major browsers. 
 
 
-Example
+Usage & Examples
 -------
 
 ```javascript
