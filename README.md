@@ -3,7 +3,7 @@ bocu
 
 A fast MIME-compatible [Binary Ordered Compression for Unicode](https://en.wikipedia.org/wiki/Binary_Ordered_Compression_for_Unicode) (BOCU). Under 2KB minified and gzipped.
 
-Like [SCSU](http://en.wikipedia.org/wiki/Standard_Compression_Scheme_for_Unicode), BOCU is designed to be useful for compressing short strings and does so by mapping runs of characters in the same small alphabet to single bytes, thus reducing Unicode text to a size comparable to that of legacy encodings, while retaining all the advantages of Unicode. Unlike SCSU, BOCU is safe for email and preserves linefeeds and other control codes. 
+Like [SCSU](http://en.wikipedia.org/wiki/Standard_Compression_Scheme_for_Unicode), BOCU is designed to be useful for compressing short strings and does so by mapping runs of characters in the same small alphabet to single bytes, thus reducing Unicode text to a size comparable to that of legacy encodings, while retaining all the advantages of Unicode. Unlike SCSU, BOCU is safe for email, preserving linefeeds and other control codes. 
 
 I could not find any javascript implementations of BOCU so I wrote this one. This should be a binary equivalent of the C code however I have not found any bocu1 files to test. Tested on the entire unicode range. Tested in the major browsers. 
 
