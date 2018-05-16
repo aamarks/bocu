@@ -80,7 +80,7 @@ var bocu = (function () {
 			c = decodeBocu1(rx, a[i++]);
 
 			if (c < -1) {
-				console.log("error: Bocu decode detects encoding error at string index " + i + ', character and preceding: ' + sBocu.substr(i - Math.max(0, 10), Math.min(i, 10)));
+				console.log("error: Bocu encoding error at string index " + i + ', character and preceding: ' + sBocu.substr(i - Math.max(0, 10), Math.min(i, 10)));
 				return;
 			}
 			if (c >= 0) {
@@ -349,7 +349,7 @@ var bocu = (function () {
 
 		if (c < 0 || c > 0x10ffff) {
 			/* illegal argument */
-			console.log('illegal character value: out of unicode range')
+			//console.log('illegal character value: out of unicode range');
 			return 0;
 		}
 
