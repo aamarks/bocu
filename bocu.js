@@ -80,7 +80,7 @@ var bocu = (function () {
 			c = decodeBocu1(rx, a[i++]);
 
 			if (c < -1) {
-				console.log("error: Bocu encoding error at string index " + i + ', character and preceding: ' + sBocu.substr(i - Math.max(0, 10), Math.min(i, 10)));
+				//console.log("error: Bocu encoding error at string index " + i + ', character and preceding: ' + sBocu.substr(i - Math.max(0, 10), Math.min(i, 10)));
 				return;
 			}
 			if (c >= 0) {
@@ -459,8 +459,8 @@ var bocu = (function () {
 				return -99;
 			}
 // #if BOCU1_MAX_TRAIL<0xff
-		// } else if (b > BOCU1_MAX_TRAIL) {
-		// 	return -99;
+//		 } else if (b > BOCU1_MAX_TRAIL) {
+//		 	return -99;
 // #endif
 		} else {
 			t = b - BOCU1_TRAIL_BYTE_OFFSET;
