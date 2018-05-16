@@ -10,7 +10,7 @@ I could not find any javascript implementations of BOCU so I wrote this one. Thi
 
 Usage & Examples
 -------
- The massive speed difference between bocu and deflate is only with small strings. 
+
 ```javascript
 sBocu = bocu.encode(sPlainText);
 sPlainText = bocu.decode(sBocu);
