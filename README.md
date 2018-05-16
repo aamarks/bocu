@@ -42,9 +42,9 @@ bocu.encode('γάμμα'); // d3 67 7c 8c 8c 81
 Notes
 -----
 
-I've ported the core parts of the C code but not the test module, and I've added a wrapper to encode a string and decode. The only minor change I made to the core was not including the number of bytes used in the lead byte (which is not stored in encoding) and simply figure out the number of bytes the return integer takes. Also the code allows for customising BOCU to be non-standard and use fewer byte values which requires conditional compilation that js can't do natively. The small bit of conditional code has been commented out, but could be added in for those unusual cases.
+- This uses ES6 features like arrow functions and the spread operator. If you want this to work in older browsers use something like the [Google Closure Compiler](https://closure-compiler.appspot.com) on Simple mode to minify, which currently will polyfill to ES5, or specify using `@language_out ES3`, or ES6 for no polyfill.
 
-This uses ES6 features like arrow functions and the spread operator. If you want this to work in older browsers use something like the [Google Closure Compiler](https://closure-compiler.appspot.com) on Simple mode to minify, which currently will polyfill to ES5, or specify using `@language_out ES3`, or ES6 for no polyfill.
+- I've ported the core parts of the C code but not the test module, and I've added a wrapper to encode a string and decode. The only minor change I made to the core was not including the number of bytes used in the lead byte (which is not stored in encoding) and simply figure out the number of bytes the return integer takes. Also the code allows for customising BOCU to be non-standard and use fewer byte values which requires conditional compilation `#if BOCU1_MAX_TRAIL`... that js can't do natively. The small bit of conditional code has been commented out, but could be added in for those unusual cases.
 
 BOCU Encoding References
 ------------------------
