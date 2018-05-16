@@ -25,7 +25,7 @@ bocu.encode('foo 𝌆 bar 𝟙𝟚𝟛😎 mañana mañana 🏳️‍🌈');
 //  benchmark for that string: Bocu 664,117 ops/sec, gz deflate (Pako) 7,081 ops/sec
 ```
 
-BOCU 'compression' won't do any better than utf-8 on simple English (byte per character --  it's bennefit is with other scripts that take multiple bytes with standard encoding like utf-8. The first character in a line will require multiple bytes and subsequent characters within a small script will only take one byte.) The massive speed difference between bocu and deflate is only with small strings, but that's when BOCU and SCSU are useful (for instance, saving individual strings into a database).
+BOCU 'compression' won't do any better than utf-8 on simple English (byte per character --  it's bennefit is with other scripts that take multiple bytes with standard encoding like utf-8. The first character in a line will require multiple bytes and subsequent characters within a small script will only take one byte.) The massive speed difference between bocu and deflate is only with small strings, but that's when BOCU and SCSU are useful (for instance, saving individual strings into a database). Because Firefox is so fast at `codePointAt` bocu is faster on it than a simple utf-8 conversion using `s = unescape(encodeURIComponent(s));` while on Chrome conversion to utf-8 is a couple of times faster.
 
 ```
 // note that the encoded lines are always still sortable 
