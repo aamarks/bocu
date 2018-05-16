@@ -5,7 +5,7 @@ A fast MIME-compatible [Binary Ordered Compression for Unicode](https://en.wikip
 
 Like [SCSU](http://en.wikipedia.org/wiki/Standard_Compression_Scheme_for_Unicode), BOCU is designed to be useful for compressing short strings and does so by mapping runs of characters in the same small alphabet to single bytes, thus reducing Unicode text to a size comparable to that of legacy encodings, while retaining all the advantages of Unicode. Unlike SCSU, BOCU is safe for email, preserving linefeeds and other control codes. 
 
-I could not find any javascript implementations of BOCU so I wrote this one. This should be a binary equivalent of the C code however I have not found any bocu1 files to test. Tested on the entire unicode range. Tested in the major browsers. (This uses ES6 features like arrow functions and the spread operator. If you want this to work in older browsers use something like the [Google Closure Compiler](https://closure-compiler.appspot.com) on Simple mode to minify which currently will polyfill to ES5, or specify using `@language_out ES3` or ES6 for no polyfill).
+I could not find any javascript implementations of BOCU so I wrote this one. This should be a binary equivalent of the C code however I have not found any bocu1 files to test. Tested on the entire unicode range. Tested in the major browsers.
 
 
 Usage & Examples
@@ -25,7 +25,7 @@ bocu.encode('foo 𝌆 bar 𝟙𝟚𝟛😎 mañana mañana 🏳️‍🌈');
 //  benchmark for that string: Bocu 664,117 ops/sec, gz deflate (Pako) 7,081 ops/sec
 ```
 
-BOCU 'compression' won't do any better than utf-8 on simple English (byte per character --  it's bennefit is with other scripts that take multiple bytes with standard encoding like utf-8. The first character in a line will require multiple bytes and subsequent characters within a small script will only take one byte.) The massive speed difference between bocu and deflate is only with small strings, but that's when BOCU and SCSU are useful (for instance, saving individual strings into a database). Because Firefox is so fast at `codePointAt` bocu is faster on it than a simple utf-8 conversion using `s = unescape(encodeURIComponent(s));` while on Chrome conversion to utf-8 is a couple of times faster.
+BOCU 'compression' won't do any better than utf-8 on simple English (byte per character --  it's bennefit is with other scripts that take multiple bytes with standard encoding like utf-8. The first character in a line will require multiple bytes and subsequent characters within a small script will only take one byte.) The massive speed difference between bocu and deflate is only with small strings, but that's when BOCU and SCSU are useful (for instance, saving individual strings into a database). bocu is faster on Firefox than a simple utf-8 conversion using `s = unescape(encodeURIComponent(s));` while on Chrome conversion to utf-8 is a couple of times faster.
 
 ```
 // note that the encoded lines are always still sortable 
@@ -38,6 +38,13 @@ bocu.encode('βήτα');  // d3 66 7e 94 81
 bocu.encode('γάμμα'); // d3 67 7c 8c 8c 81
 
 ```
+
+Notes
+-----
+
+I've ported the core parts of the C code but not the test module, and I've added a wrapper to encode a string and decode. The only minor change I made to the core was not including the number of bytes used in the lead byte (which is not stored in encoding) and simply figure out the number of bytes the return integer takes. Also the code allows for customising BOCU to be non-standard and use fewer byte values which requires conditional compilation that js can't do natively. The small bit of conditional code has been commented out, but could be added in for those unusual cases.
+
+This uses ES6 features like arrow functions and the spread operator. If you want this to work in older browsers use something like the [Google Closure Compiler](https://closure-compiler.appspot.com) on Simple mode to minify, which currently will polyfill to ES5, or specify using `@language_out ES3`, or ES6 for no polyfill).
 
 BOCU Encoding References
 ------------------------
