@@ -1,3 +1,5 @@
+/** @license JS code Copyright (C) 2018, Arthur Marks,  MIT License. C code Copyright (C) 2002, International Business Machines, Markus W. Scherer, ICU X License */
+
 /**
 *   BOCU : Binary Ordered Compression for Unicode
 *
