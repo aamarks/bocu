@@ -5,7 +5,7 @@ A fast MIME-compatible [Binary Ordered Compression for Unicode](https://en.wikip
 
 Like [SCSU](http://en.wikipedia.org/wiki/Standard_Compression_Scheme_for_Unicode), BOCU is designed to be useful for compressing short strings and does so by mapping runs of characters in the same small alphabet to single bytes, thus reducing Unicode text to a size comparable to that of legacy encodings, while retaining all the advantages of Unicode. Unlike SCSU, BOCU is safe for email, preserving linefeeds and other control codes. 
 
-I could not find any javascript implementations of BOCU so I wrote this one. This should be a binary equivalent of the C code however I have not found any bocu1 files to test. Tested on the entire unicode range. Tested in the major browsers.
+I could not find any javascript implementations of BOCU so I wrote this one. This produces binary equivalent output of the C code. Tested on the entire unicode range. Tested in the major browsers.
 
 
 Usage & Examples
@@ -45,6 +45,8 @@ Notes
 - This will work as is in a modern browser `<script src="bocu.js"></script>`. This uses ES6 features like arrow functions and the spread operator. If you want this to work in older browsers use something like the [Google Closure Compiler](https://closure-compiler.appspot.com) on Simple mode to minify, which currently will polyfill to ES5, or specify using `@language_out ES3`, or ES6 for no polyfill.
 
 - I've ported the core parts of the C code (not the test module) and added a wrapper to encode a string and decode. The only minor change I made to the core was not including the number of bytes used in the lead byte (which is not stored in the encoding anyway) and simply figure out the number of bytes the return integer takes. Also the code allows for customising BOCU to be non-standard and use fewer byte values which requires conditional compilation `#if BOCU1_MAX_TRAIL`... that js can't do natively. The small bit of conditional code has been commented out, but could be added in for those unusual cases.
+
+-I have not found any bocu1 files to test and can translate but can't program in C. The [C program](http://source.icu-project.org/repos/icu/icuhtml/trunk/design/conversion/bocu1/bocu1.html) is available and can produce BOCU-1 encoded files. If testing those files by reading them with fileReader, they must be opened as binary, not text, else fileReader will get the encoding wrong. 
 
 BOCU Encoding References
 ------------------------
