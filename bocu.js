@@ -569,3 +569,6 @@ var bocu = (function () {
 	}
 
 })();
+
+// I think if using this in node.js you need this?
+if (typeof module != 'undefined' && module.exports) module.exports = bocu;
