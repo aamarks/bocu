@@ -16,7 +16,7 @@ sBocu = bocu.encode(sPlainText);
 sPlainText = bocu.decode(sBocu);
 ```
 
-```
+```javascript
 bocu.encode('“Moscow” is Москва.'); // returns binary string: ñV. ¿Ã³¿ÇñW .¼Ã ÓÐKú
 // with bytes: F1 56 2E A0 BF C3 B3 BF C7 F1 57 20 2E BC C3 20 D3 D0 8E 91 8A 82 80 4B FA
 
