@@ -46,7 +46,7 @@ Notes
 
 - I've ported the core parts of the C code (not the test module) and added a wrapper to encode a string and decode. The only minor change I made to the core was not including the number of bytes used in the lead byte (which is not stored in the encoding anyway) and simply figure out the number of bytes the return integer takes. Also the code allows for customising BOCU to be non-standard and use fewer byte values which requires conditional compilation `#if BOCU1_MAX_TRAIL`... that js can't do natively. The small bit of conditional code has been commented out, but could be added in for those unusual cases.
 
-- I have not found any bocu1 files to test and can translate but can't program in C. The [C program](http://source.icu-project.org/repos/icu/icuhtml/trunk/design/conversion/bocu1/bocu1.html) is available and can produce BOCU-1 encoded files. If testing those files by reading them with fileReader, they must be opened as binary, not text, else fileReader will get the encoding wrong. 
+- I have not found any bocu1 files to test and can translate but can't program in C. The [C program](http://source.icu-project.org/repos/icu/icuhtml/trunk/design/conversion/bocu1/bocu1.html) is available and can produce BOCU-1 encoded files. If testing those files by reading them with FileReader, they must be opened as binary, not text, else FileReader will get the encoding wrong. 
 
 BOCU Encoding References
 ------------------------
